@@ -372,11 +372,13 @@ function MapRenderer({ center, markers, districtBounds }: {
         />
         
         {/* Add boundary layer */}
-        <TileLayer
-          url="https://tiles.stadiamaps.com/tiles/stamen_toner_lines/{z}/{x}/{y}{r}.png"
-          attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-          opacity={0.3}
-        />
+        {process.env.NEXT_PUBLIC_STADIA_MAPS_API_KEY && (
+          <TileLayer
+            url={`https://tiles.stadiamaps.com/tiles/stamen_toner_lines/{z}/{x}/{y}{r}.png?api_key=${process.env.NEXT_PUBLIC_STADIA_MAPS_API_KEY}`}
+            attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+            opacity={0.3}
+          />
+        )}
         
         {markers.map((marker, index) => (
           <Fragment key={`group-${marker.taluka}-${index}`}>
