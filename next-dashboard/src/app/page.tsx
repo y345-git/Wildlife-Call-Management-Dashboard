@@ -29,6 +29,11 @@ const GeographicalMap = dynamic(
 )
 
 export default function Home() {
+  const cityName = process.env.NEXT_PUBLIC_CITY_NAME || process.env.CITY_NAME || ''
+  const dashboardTitle = cityName
+    ? `Wildlife Incident Management ${cityName}`
+    : 'Wildlife Incident Management'
+
   const [data, setData] = useState<IncidentData[]>([])
   const [filteredData, setFilteredData] = useState<IncidentData[]>([])
   const [loading, setLoading] = useState(false)
@@ -185,7 +190,7 @@ export default function Home() {
               </button>
               <div className="flex-1 min-w-0">
                 <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 dark:from-emerald-400 dark:via-teal-400 dark:to-cyan-400 bg-clip-text text-transparent break-words animate-in slide-in-from-left-4 duration-500 delay-100">
-                  Wildlife Incident Management
+                  {dashboardTitle}
                 </h1>
                 <p className="text-xs sm:text-sm text-gray-600 dark:text-slate-400 font-medium mt-1 flex flex-wrap items-center gap-2 animate-in slide-in-from-left-4 duration-500 delay-200">
                   <span className="inline-block w-2 h-2 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full animate-pulse shadow-sm flex-shrink-0"></span>
