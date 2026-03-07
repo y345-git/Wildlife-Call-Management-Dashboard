@@ -104,15 +104,15 @@ export function FilterPanel({ data, onFilterChange }: FilterPanelProps) {
     selectedTimeOfDay.length < 2
 
   return (
-    <Card className="border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 dark:backdrop-blur-sm shadow-md relative z-50">
-      <CardContent className="p-3 md:p-6 relative z-50">
+    <Card className="border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 dark:backdrop-blur-sm shadow-md w-full max-w-full overflow-visible block">
+      <CardContent className="p-2 md:p-4 lg:p-6 overflow-visible block">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0 mb-4 md:mb-6">
           <h3 className="text-base md:text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
             🔎 Filter Data
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 relative z-50">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6 block">
           <DateRangeFilter
             minDate={minDate}
             maxDate={maxDate}

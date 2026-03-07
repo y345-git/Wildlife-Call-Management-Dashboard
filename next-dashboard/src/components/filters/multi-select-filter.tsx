@@ -57,7 +57,7 @@ export function MultiSelectFilter({
   }
 
   return (
-    <div className="space-y-2 relative" ref={dropdownRef}>
+    <div className="space-y-2 relative block" ref={dropdownRef}>
       <label className="text-sm font-semibold text-gray-700 dark:text-slate-300 flex items-center gap-2">
         {icon}
         {label}
@@ -81,7 +81,7 @@ export function MultiSelectFilter({
         </button>
 
         {isOpen && (
-          <div className="absolute z-[9999] mt-2 w-full rounded-lg border-2 border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-900 shadow-2xl dark:shadow-emerald-500/10">
+          <div className="absolute z-[10000] mt-2 w-full rounded-lg border-2 border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-900 shadow-2xl dark:shadow-emerald-500/10 max-h-60 overflow-y-auto block">
             <div className="p-2 border-b border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-800">
               <input
                 type="text"
