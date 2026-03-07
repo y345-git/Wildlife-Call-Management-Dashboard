@@ -1,0 +1,63 @@
+# Sensitive files
+credentials.json
+sheetid.txt
+GEOMAP-IMPLEMENTATION-TASKS.md
+Contacts/
+
+# Data files (Excel and PDF)
+*.xlsx
+*.xls
+*.pdf
+~$*.xlsx
+~$*.xls
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+wcm/
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Node
+node_modules/
+.next/
+.pnp/
+.pnp.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build outputs
+/out/
+/build/
+/coverage/
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts

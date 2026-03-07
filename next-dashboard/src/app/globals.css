@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Emerald theme (light) - inspired by DaisyUI Emerald */
+    --background: 0 0% 100%;
+    --foreground: 158 64% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 158 64% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 158 64% 10%;
+    --primary: 158 64% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 158 30% 96%;
+    --secondary-foreground: 158 64% 20%;
+    --muted: 158 30% 96%;
+    --muted-foreground: 158 10% 40%;
+    --accent: 158 50% 92%;
+    --accent-foreground: 158 64% 30%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 158 30% 88%;
+    --input: 158 30% 88%;
+    --ring: 158 64% 52%;
+    --radius: 0.5rem;
+    --chart-1: 158 64% 52%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 142 70% 45%;
+    --chart-4: 184 77% 34%;
+    --chart-5: 197 37% 24%;
+  }
+
+  .dark {
+    /* Forest theme (dark) - inspired by DaisyUI Forest */
+    --background: 164 86% 4%;
+    --foreground: 160 20% 90%;
+    --card: 164 75% 6%;
+    --card-foreground: 160 20% 90%;
+    --popover: 164 75% 6%;
+    --popover-foreground: 160 20% 90%;
+    --primary: 158 64% 52%;
+    --primary-foreground: 164 86% 4%;
+    --secondary: 164 40% 12%;
+    --secondary-foreground: 160 20% 90%;
+    --muted: 164 40% 12%;
+    --muted-foreground: 160 10% 60%;
+    --accent: 164 50% 18%;
+    --accent-foreground: 158 64% 80%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 160 20% 90%;
+    --border: 164 40% 15%;
+    --input: 164 40% 15%;
+    --ring: 158 64% 52%;
+    --chart-1: 158 64% 52%;
+    --chart-2: 173 58% 45%;
+    --chart-3: 142 70% 50%;
+    --chart-4: 184 77% 40%;
+    --chart-5: 197 37% 35%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom Animations */
+@layer utilities {
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes shake {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+      transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+      transform: translateX(5px);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-shake {
+    animation: shake 0.5s ease-in-out;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      transparent 100%
+    );
+    background-size: 1000px 100%;
+  }
+
+  /* Grid Pattern Background */
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, rgb(0 0 0 / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(0 0 0 / 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .dark .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  }
+
+  /* Glass Morphism Effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .dark .glass {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Smooth Scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #10b981, #14b8a6);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #059669, #0d9488);
+  }
+
+  .dark ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #059669, #0d9488);
+  }
+
+  /* Custom scrollbar for dropdowns */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #10b981;
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #059669;
+  }
+
+  .dark .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #059669;
+  }
+}
