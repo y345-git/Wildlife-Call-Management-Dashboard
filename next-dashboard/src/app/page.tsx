@@ -83,11 +83,6 @@ export default function Home() {
     return () => clearInterval(timer)
   }, [autoRefresh, refreshInterval])
 
-  // Initialize filtered data when data loads
-  useEffect(() => {
-    setFilteredData(data)
-  }, [data])
-
   // Auto-scroll to chart when selection changes
   useEffect(() => {
     if (chartDisplayRef.current) {
@@ -494,8 +489,8 @@ export default function Home() {
                 <CardContent>
                   {(() => {
                     const monthCounts = filteredData.reduce((acc, item) => {
-                      const date = new Date(item.Timestamp)
-                      if (!isNaN(date.getTime())) {
+                      const date = parseIncidentDate(item.Timestamp)
+                      if (date) {
                         const monthYear = `${date.toLocaleString('default', { month: 'short' })} ${date.getFullYear()}`
                         acc[monthYear] = (acc[monthYear] || 0) + 1
                       }
@@ -522,12 +517,14 @@ export default function Home() {
                 <CardContent>
                   {(() => {
                     if (filteredData.length === 0) return <div className="text-2xl text-teal-400">No data</div>
-                    const dates = filteredData.map(d => new Date(d.Timestamp)).filter(d => !isNaN(d.getTime()))
+                    const dates = filteredData
+                      .map(d => parseIncidentDate(d.Timestamp))
+                      .filter((d): d is Date => d !== null)
                     if (dates.length === 0) return <div className="text-2xl text-teal-400">No data</div>
                     const minDate = new Date(Math.min(...dates.map(d => d.getTime())))
                     const maxDate = new Date(Math.max(...dates.map(d => d.getTime())))
-                    const daysDiff = Math.max(1, Math.ceil((maxDate.getTime() - minDate.getTime()) / (1000 * 60 * 60 * 24)))
-                    const avgPerDay = (filteredData.length / daysDiff).toFixed(1)
+                    const daysDiff = Math.max(1, Math.floor((maxDate.getTime() - minDate.getTime()) / (1000 * 60 * 60 * 24)) + 1)
+                    const avgPerDay = (dates.length / daysDiff).toFixed(1)
                     return (
                       <>
                         <div className="text-4xl font-bold text-teal-800 dark:text-teal-200">{avgPerDay}</div>
@@ -1097,5 +1094,3 @@ export default function Home() {
     </>
   )
 }
-
-
